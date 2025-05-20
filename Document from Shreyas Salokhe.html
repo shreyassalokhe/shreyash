@@ -1,0 +1,742 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shreyas Subhash Salokhe | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --blue-dark: #0a192f;
+      --blue-mid: #172a45;
+      --blue-light: #64ffda;
+      --text-light: #ccd6f6;
+      --text-lighter: #e6f1ff;
+      --accent: #64ffda;
+      --section-bg: rgba(10, 25, 47, 0.85);
+      --card-bg: rgba(23, 42, 69, 0.5);
+      --nav-height: 70px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 20px);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background-color: var(--blue-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 120px 20px 80px;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(100,255,218,0.03)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-lighter);
+      position: relative;
+      z-index: 1;
+      line-height: 1.1;
+    }
+
+    header h2 {
+      font-weight: 500;
+      color: var(--accent);
+      margin-top: 20px;
+      font-size: clamp(1rem, 4vw, 1.8rem);
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    nav.tabs {
+      position: sticky;
+      top: 0;
+      background-color: rgba(10, 25, 47, 0.95);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+      box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+      height: var(--nav-height);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .tab-container {
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .tab-button {
+      border: none;
+      padding: 0 20px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      background: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      height: var(--nav-height);
+      position: relative;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+    }
+
+    .tab-button:hover {
+      color: var(--accent);
+    }
+
+    .tab-button::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background-color: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s ease;
+    }
+
+    .tab-button:hover::after {
+      transform: scaleX(1);
+    }
+
+    section {
+      padding: 100px 30px;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.2;
+    }
+
+    section h3 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 30px;
+      color: var(--text-lighter);
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    section h3::before {
+      content: '01.';
+      position: absolute;
+      left: -50px;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .name-title {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin: 0 0 30px;
+      font-weight: 400;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .tri-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .edu-item, .skill, .project-item, .experience-item {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .edu-item::before, .skill::before, .project-item::before, .experience-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, transparent 100%);
+      z-index: -1;
+    }
+
+    .edu-item:hover, .skill:hover, .project-item:hover, .experience-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+      border-color: rgba(100, 255, 218, 0.3);
+    }
+
+    .edu-item h4, .skill h4, .project-item h4, .experience-item h4 {
+      color: var(--text-lighter);
+      margin-top: 0;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    ul {
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+
+    li {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    li::before {
+      content: "▹";
+      position: absolute;
+      left: -20px;
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      background-color: var(--blue-mid);
+      color: var(--text-light);
+      position: relative;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.2;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+      color: var(--text-light);
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .progress-container {
+      width: 100%;
+      background-color: rgba(100, 255, 218, 0.1);
+      height: 4px;
+      border-radius: 2px;
+      margin: 15px 0 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: 2px;
+      background-color: var(--accent);
+      position: relative;
+    }
+
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shine 2s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .quote {
+      font-style: italic;
+      text-align: center;
+      margin: 60px auto;
+      max-width: 700px;
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1.8;
+      position: relative;
+      padding: 0 40px;
+    }
+
+    .quote::before {
+      content: open-quote;
+      font-size: 4rem;
+      color: rgba(100, 255, 218, 0.2);
+      position: absolute;
+      left: 0;
+      top: -20px;
+    }
+
+    .quote::after {
+      content: close-quote;
+      font-size: 4rem;
+      color: rgba(100, 255, 218, 0.2);
+      position: absolute;
+      right: 0;
+      bottom: -40px;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .contact-card {
+      flex: 1;
+      min-width: 250px;
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 5px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(100, 255, 218, 0.3);
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .contact-card h4 {
+      margin: 10px 0;
+      color: var(--text-lighter);
+    }
+
+    .section-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-number {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 10rem;
+      color: rgba(100, 255, 218, 0.03);
+      font-weight: 700;
+      z-index: -1;
+      line-height: 1;
+    }
+
+    .project-item .project-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .project-link {
+      color: var(--accent);
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .project-link:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .experience-date {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --nav-height: 60px;
+      }
+      
+      header {
+        padding: 100px 20px 60px;
+      }
+      
+      section {
+        padding: 80px 20px;
+      }
+      
+      section h3::before {
+        display: none;
+      }
+      
+      .tab-container {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 10px;
+        scrollbar-width: none;
+      }
+      
+      .tab-container::-webkit-scrollbar {
+        display: none;
+      }
+      
+      .tab-button {
+        padding: 0 15px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+      
+      .quote {
+        padding: 0 20px;
+      }
+      
+      .quote::before, .quote::after {
+        font-size: 3rem;
+      }
+    }
+
+    /* Animation classes */
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <h1 id="portfolio" class="fade-in">Shreyas Subhash Salokhe</h1>
+      <h2 class="fade-in">B.Tech in Electronics & Telecommunication (ENTC)</h2>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <div class="tab-container">
+      <button class="tab-button" onclick="document.getElementById('about').scrollIntoView()">About</button>
+      <button class="tab-button" onclick="document.getElementById('projects').scrollIntoView()">Projects</button>
+      
+      <button class="tab-button" onclick="document.getElementById('goals').scrollIntoView()">Goals</button>
+      <button class="tab-button" onclick="document.getElementById('skills').scrollIntoView()">Skills</button>
+      <button class="tab-button" onclick="document.getElementById('experience').scrollIntoView()">Experience</button>
+      <button class="tab-button" onclick="document.getElementById('education').scrollIntoView()">Education</button>
+      <button class="tab-button" onclick="document.getElementById('contact').scrollIntoView()">Contact</button>
+    </div>
+  </nav>
+
+  <section id="about">
+    <div class="section-content">
+      <h3>About Me</h3>
+      <div class="name-title">Shreyas Subhash Salokhe</div>
+      <p>Hello! I'm Shreyas Subhash Salokhe, a dedicated and passionate Electronics and Telecommunication (ENTC) student at MIT Academy of Engineering, Pune. With a strong foundation in electronics, communication systems, and embedded technologies, I am constantly exploring new advancements in the field. My goal is to leverage my technical skills and knowledge to contribute to innovative projects and research in the domain of telecommunications and embedded systems.</p>
+     
+      
+      <div class="quote">
+        The best way to predict the future is to invent it.
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-content">
+      <h3>Featured Projects</h3>
+      <div class="name-title">💻 Building Solutions</div>
+      <div class="grid">
+        <div class="project-item fade-in">
+          <h4>Fire Alarm System</h4>
+          <p>Designed a responsive fire detection system using a thermistor (temperature sensor), triggering audible alarms and LED warnings upon detecting critical temperature rises.</p>
+         
+     
+            
+         
+          </div>
+        </div>
+        <div class="project-item fade-in">
+          <h4>Anti-theft Bike Alarm</h4>
+          <p> Built an intrusion alert system with Arduino Uno using motion sensors, activating a loud buzzer  when unauthorized movement is detected.</p>
+        
+            
+            
+          </div>
+        </div>
+     
+          
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section id="goals">
+    <div class="section-content">
+      <h3>My Goals</h3>
+      <div class="name-title">🎯 Future Aspirations</div>
+      <ul>
+        <li>- To excel in the field of **Telecommunication & Embedded Systems**</li>
+        <li>- To work on **cutting-edge IoT and wireless communication projects** </li> 
+        <li>- To contribute to **research and innovation** in electronics </li>
+        <li>- To enhance my skills in **programming, PCB design, and signal processing**</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-content">
+      <h3>Technical Skills</h3>
+      <div class="name-title">🧠 Capabilities & Expertise</div>
+     
+        <div class="skill fade-in">
+          <h4>Programming Languages</h4>
+          <p>Proficient in C++, Java, Python, and JavaScript for various application development.</p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 80%"></div>
+          </div>
+        </div>
+    
+        </div>
+      </div>
+      
+      <h3 style="margin-top: 50px;">Soft Skills</h3>
+      <div class="grid">
+        <div class="skill fade-in">
+          <h4>Team Leadership</h4>
+          <p>Experience leading project teams and coordinating group efforts to meet deadlines and objectives.</p>
+        </div>
+        <div class="skill fade-in">
+          <h4>Problem Solving</h4>
+          <p>Strong analytical thinking and creative approach to technical and logistical challenges.</p>
+        </div>
+        <div class="skill fade-in">
+          <h4>Public Speaking</h4>
+          <p>Comfortable presenting technical concepts and conducting workshops for diverse audiences.</p>
+        </div>
+        <div class="skill fade-in">
+          <h4>Time Management</h4>
+          <p>Effective prioritization of tasks and projects while maintaining high-quality output.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-content">
+      <h3>Experience</h3>
+      <div class="name-title">🚀 Professional Growth</div>
+      <div class="grid">
+    
+        <div class="experience-item fade-in">
+          <h4>Student Developer</h4>
+          <span class="experience-date">University Computer Science Association | 2023-Present</span>
+          <ul>
+            <li>Maintain and update the student association website</li>
+            <li>Create technical documentation for student projects</li>
+            <li>Assist in organizing coding workshops and hackathons</li>
+          </ul>
+        </div>
+        <div class="experience-item fade-in">
+          <h4>Technical Content Creator</h4>
+          <span class="experience-date">CS Tutorial Blog | 2023-Present</span>
+          <ul>
+            <li>Write beginner-friendly tutorials on web development concepts</li>
+            <li>Create code examples and demonstrations for learning resources</li>
+            <li>Received positive feedback for clear explanations of complex topics</li>
+          </ul>
+        </div>
+        <div class="experience-item fade-in">
+          <h4>Volunteer Coding Instructor</h4>
+          <span class="experience-date">Code For All Initiative | 2022-2023</span>
+          <ul>
+            <li>Taught basic programming concepts to high school students</li>
+            <li>Developed curriculum materials for HTML, CSS, and JavaScript classes</li>
+            <li>Mentored students on their first programming projects</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-content">
+      <h3>Education</h3>
+      <div class="name-title">🎓 Academic Background</div>
+      <div class="grid">
+        <div class="edu-item fade-in">
+          <h4>B.Tech in ENTC (Ongoing)</h4>
+          <p>MIT Academy Of Engineering, Batch of 2028</p>
+          <ul>
+            <li>Current CGPA: 7.95/10</li>
+        
+          </ul>
+        </div>
+        <div class="edu-item fade-in">
+          <h4>HSC (2024)</h4>
+          <p>Super Abhinav Science Academy</p>
+          <ul>
+            <li>Graduated with 81.33% in PCM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-content">
+      <h3>Contact Me</h3>
+      <div class="name-title">📬 Let's Connect</div>
+      
+      
+      <div class="contact-methods">
+        <div class="contact-card fade-in">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <h4>Phone</h4>
+          <p>+91 9922581888</p>
+        </div>
+        <div class="contact-card fade-in">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <h4>Email</h4>
+          <p>shreyassalokhe153@gmail.com</p>
+        </div>
+        
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/shreyas-salokhe-45459218a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        
+        <a href="https://www.instagram.com/shreyas_not.fr?igsh=MTJmY2JxaGx3ZjNoeg==" class="social-icon"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Shreyas Subhash Salokhe. All rights reserved.</p>
+    <p>Designed & Built with ❤️ by Shreyas</p>
+  </footer>
+
+  <script>
+    // Simple fade-in animation for sections as they come into view
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      fadeInObserver.observe(el);
+    });
+    
+    // Highlight current section in navigation
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.tab-button');
+    example
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= (sectionTop - 300)) {                        
